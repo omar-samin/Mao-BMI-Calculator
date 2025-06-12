@@ -1,5 +1,8 @@
 # Welcome to your Lovable project
 
+## Application Link
+https://mao-bmi-calculator.lovable.app/
+
 ## Project info
 
 **URL**: https://lovable.dev/projects/7cb4eeff-1f43-4152-b9f8-b2afec06d94e
