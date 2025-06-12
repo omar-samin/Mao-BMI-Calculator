@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
-import { Calculator, Info, User, Weight, Ruler } from 'lucide-react';
+import { BicepsFlexed, Info, User, Weight, Ruler } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import BMIResult from './BMIResult';
 
@@ -174,27 +174,28 @@ const BMICalculator = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-orange-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Calculator className="h-8 w-8 text-primary" />
-            <h1 className="text-4xl font-bold text-foreground">Mao BMI Calculator</h1>
+            <BicepsFlexed className="h-8 w-8 text-purple-600" />
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 bg-clip-text text-transparent">
+              Mao BMI Calculator
+            </h1>
           </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Calculate your Body Mass Index with our professional, NHS-inspired calculator. 
-            Get accurate results with detailed health category information.
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto font-medium">
+            Know Your Numbers, Understand Your Health – Calculate Your BMI with Confidence.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form Section */}
-          <div className="bg-white rounded-xl shadow-lg p-6 space-y-6">
-            <h2 className="text-2xl font-semibold text-foreground mb-4">Personal Information</h2>
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl border border-purple-200 p-6 space-y-6">
+            <h2 className="text-2xl font-semibold text-purple-800 mb-4">Personal Information</h2>
             
             {/* Age */}
             <div className="space-y-2">
-              <Label htmlFor="age" className="flex items-center gap-2">
+              <Label htmlFor="age" className="flex items-center gap-2 text-purple-700 font-medium">
                 <User className="h-4 w-4" />
                 Age (years)
               </Label>
@@ -206,43 +207,43 @@ const BMICalculator = () => {
                 placeholder="Enter your age"
                 value={formData.age}
                 onChange={(e) => handleInputChange('age', e.target.value)}
-                className="w-full"
+                className="w-full border-purple-300 focus:border-purple-500 focus:ring-purple-500"
               />
             </div>
 
             {/* Gender */}
             <div className="space-y-3">
-              <Label className="text-base font-medium">Gender</Label>
+              <Label className="text-base font-medium text-purple-700">Gender</Label>
               <RadioGroup
                 value={formData.gender}
                 onValueChange={(value) => handleInputChange('gender', value)}
                 className="flex flex-wrap gap-6"
               >
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="male" id="male" />
-                  <Label htmlFor="male">Male</Label>
+                  <RadioGroupItem value="male" id="male" className="border-purple-400 text-purple-600" />
+                  <Label htmlFor="male" className="text-purple-700">Male</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="female" id="female" />
-                  <Label htmlFor="female">Female</Label>
+                  <RadioGroupItem value="female" id="female" className="border-purple-400 text-purple-600" />
+                  <Label htmlFor="female" className="text-purple-700">Female</Label>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="other" id="other" />
-                  <Label htmlFor="other">Other</Label>
+                  <RadioGroupItem value="other" id="other" className="border-purple-400 text-purple-600" />
+                  <Label htmlFor="other" className="text-purple-700">Other</Label>
                 </div>
               </RadioGroup>
             </div>
 
             {/* Height */}
             <div className="space-y-3">
-              <Label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2 text-purple-700 font-medium">
                 <Ruler className="h-4 w-4" />
                 Height
-                <Info className="h-4 w-4 text-muted-foreground" title="Choose your preferred unit" />
+                <Info className="h-4 w-4 text-purple-500" />
               </Label>
               
               <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
-                <SelectTrigger className="w-48">
+                <SelectTrigger className="w-48 border-purple-300 focus:border-purple-500">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -257,7 +258,7 @@ const BMICalculator = () => {
                   placeholder="Height in cm (e.g., 175)"
                   value={formData.heightCm}
                   onChange={(e) => handleInputChange('heightCm', e.target.value)}
-                  className="w-full"
+                  className="w-full border-purple-300 focus:border-purple-500 focus:ring-purple-500"
                 />
               ) : (
                 <div className="flex gap-2">
@@ -266,14 +267,14 @@ const BMICalculator = () => {
                     placeholder="Feet"
                     value={formData.heightFeet}
                     onChange={(e) => handleInputChange('heightFeet', e.target.value)}
-                    className="flex-1"
+                    className="flex-1 border-purple-300 focus:border-purple-500 focus:ring-purple-500"
                   />
                   <Input
                     type="number"
                     placeholder="Inches"
                     value={formData.heightInches}
                     onChange={(e) => handleInputChange('heightInches', e.target.value)}
-                    className="flex-1"
+                    className="flex-1 border-purple-300 focus:border-purple-500 focus:ring-purple-500"
                   />
                 </div>
               )}
@@ -281,14 +282,14 @@ const BMICalculator = () => {
 
             {/* Weight */}
             <div className="space-y-3">
-              <Label className="flex items-center gap-2">
+              <Label className="flex items-center gap-2 text-purple-700 font-medium">
                 <Weight className="h-4 w-4" />
                 Weight
-                <Info className="h-4 w-4 text-muted-foreground" title="Choose your preferred unit" />
+                <Info className="h-4 w-4 text-purple-500" />
               </Label>
               
               <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange('weightUnit', value)}>
-                <SelectTrigger className="w-48">
+                <SelectTrigger className="w-48 border-purple-300 focus:border-purple-500">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -303,7 +304,7 @@ const BMICalculator = () => {
                   placeholder="Weight in kg (e.g., 70)"
                   value={formData.weightKg}
                   onChange={(e) => handleInputChange('weightKg', e.target.value)}
-                  className="w-full"
+                  className="w-full border-purple-300 focus:border-purple-500 focus:ring-purple-500"
                 />
               ) : (
                 <Input
@@ -311,7 +312,7 @@ const BMICalculator = () => {
                   placeholder="Weight in lbs (e.g., 154)"
                   value={formData.weightLbs}
                   onChange={(e) => handleInputChange('weightLbs', e.target.value)}
-                  className="w-full"
+                  className="w-full border-purple-300 focus:border-purple-500 focus:ring-purple-500"
                 />
               )}
             </div>
@@ -320,7 +321,7 @@ const BMICalculator = () => {
             <Button
               onClick={calculateBMI}
               disabled={!isFormValid() || isCalculating}
-              className="w-full py-3 text-lg font-semibold bg-primary hover:bg-primary/90 disabled:opacity-50"
+              className="w-full py-3 text-lg font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white disabled:opacity-50 shadow-lg"
             >
               {isCalculating ? (
                 <div className="flex items-center gap-2">
@@ -329,7 +330,7 @@ const BMICalculator = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
-                  <Calculator className="h-5 w-5" />
+                  <BicepsFlexed className="h-5 w-5" />
                   Calculate BMI
                 </div>
               )}
@@ -337,21 +338,21 @@ const BMICalculator = () => {
 
             {isCalculating && (
               <div className="space-y-2">
-                <Label className="text-sm text-muted-foreground">Processing...</Label>
+                <Label className="text-sm text-purple-600">Processing...</Label>
                 <Progress value={66} className="w-full" />
               </div>
             )}
           </div>
 
           {/* Results Section */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-xl border border-purple-200 p-6">
             {showResult && bmiResult !== null ? (
               <BMIResult bmi={bmiResult} />
             ) : (
               <div className="text-center py-12">
-                <Calculator className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-muted-foreground mb-2">Ready to Calculate</h3>
-                <p className="text-muted-foreground">
+                <BicepsFlexed className="h-16 w-16 text-purple-400 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-purple-700 mb-2">Ready to Calculate</h3>
+                <p className="text-purple-600">
                   Fill in your details on the left and click "Calculate BMI" to see your results here.
                 </p>
               </div>
