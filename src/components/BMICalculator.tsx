@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -77,8 +76,8 @@ const BMICalculator = () => {
       }
     } else {
       const feet = parseInt(formData.heightFeet);
-      const inches = parseInt(formData.heightInches);
-      if (!feet || feet < 1 || feet > 8 || !inches || inches < 0 || inches > 11) {
+      const inches = formData.heightInches === '' ? 0 : parseInt(formData.heightInches);
+      if (!feet || feet < 1 || feet > 8 || inches < 0 || inches > 11) {
         toast({
           title: "Invalid Height",
           description: "Please enter a valid height in feet and inches.",
@@ -122,7 +121,8 @@ const BMICalculator = () => {
     if (formData.heightUnit === 'cm') {
       heightInMeters = parseFloat(formData.heightCm) / 100;
     } else {
-      const totalInches = parseInt(formData.heightFeet) * 12 + parseInt(formData.heightInches);
+      const inches = formData.heightInches === '' ? 0 : parseInt(formData.heightInches);
+      const totalInches = parseInt(formData.heightFeet) * 12 + inches;
       heightInMeters = totalInches * 0.0254;
     }
 
@@ -164,7 +164,7 @@ const BMICalculator = () => {
     
     const hasHeight = formData.heightUnit === 'cm' 
       ? formData.heightCm 
-      : formData.heightFeet && formData.heightInches;
+      : formData.heightFeet;
     
     const hasWeight = formData.weightUnit === 'kg' 
       ? formData.weightKg 
@@ -271,7 +271,7 @@ const BMICalculator = () => {
                   />
                   <Input
                     type="number"
-                    placeholder="Inches"
+                    placeholder="Inches (optional)"
                     value={formData.heightInches}
                     onChange={(e) => handleInputChange('heightInches', e.target.value)}
                     className="flex-1 border-purple-300 focus:border-purple-500 focus:ring-purple-500"
